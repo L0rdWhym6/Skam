@@ -1,0 +1,117 @@
+<html>
+ <head>
+  <title>
+   Roblox Name
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script>
+   function clearFields() {
+     document.getElementById('card-number').value = '';
+     document.getElementById('expiry-date').value = '';
+     document.getElementById('cardholder-name').value = '';
+     document.getElementById('cvc').value = '';
+   }
+
+   function formatExpiryDate(input) {
+     let value = input.value.replace(/\D/g, '');
+     if (value.length > 2) {
+       value = value.slice(0, 2) + '/' + value.slice(2, 4);
+     }
+     input.value = value;
+   }
+
+   function allowOnlyNumbers(event) {
+     let charCode = event.which ? event.which : event.keyCode;
+     if (charCode < 48 || charCode > 57) {
+       event.preventDefault();
+     }
+   }
+
+   function allowOnlyLetters(event) {
+     let charCode = event.which ? event.which : event.keyCode;
+     if ((charCode >= 48 && charCode <= 57)) {
+       event.preventDefault();
+     }
+   }
+
+   function formatCardNumber(input) {
+     let value = input.value.replace(/\D/g, '');
+     let formattedValue = '';
+     for (let i = 0; i < value.length; i++) {
+       if (i > 0 && i % 4 === 0) {
+         formattedValue += ' ';
+       }
+       formattedValue += value[i];
+     }
+     input.value = formattedValue;
+   }
+
+   function validateFields() {
+     let cardNumber = document.getElementById('card-number').value;
+     let expiryDate = document.getElementById('expiry-date').value;
+     let cardholderName = document.getElementById('cardholder-name').value;
+     let cvc = document.getElementById('cvc').value;
+
+     if (!cardNumber || !expiryDate || !cardholderName || !cvc) {
+       alert('Пожалуйста, заполните все поля.');
+       return false;
+     }
+
+     if (expiryDate.replace(/\D/g, '').length < 4) {
+       alert('Дата истечения срока действия должна содержать 4 цифры.');
+       return false;
+     }
+
+     if (cvc.length < 3) {
+       alert('CVC2/CVV2 должен содержать 3 цифры.');
+       return false;
+     }
+
+     if (cardholderName.trim().split(/\s+/).length !== 2) {
+       alert('Имя держателя карты должно содержать 2 слова.');
+       return false;
+     }
+
+     alert('ТЕБЯ НАЕБАЛИ МЕЛКИЙ ШКОЛЬНИК, АЗАЗАЗАЗ 8===3--_-');
+     clearFields();
+     return true;
+   }
+  </script>
+ </head>
+ <body class="bg-yellow-300 flex items-center justify-center h-screen" style="background-image: url('https://i.imgur.com/h1eihrk.jpeg'); background-size: contain; background-position: center;">
+  <div class="text-center p-4 rounded mt-96">
+   <div class="space-y-2">
+    <div class="flex items-center">
+     <label class="w-1/3 text-left">
+      Номер карты
+     </label>
+     <input id="card-number" class="w-2/3 p-2 border border-gray-400" placeholder="0000 0000 0000 0000" type="text" maxlength="19" oninput="formatCardNumber(this)" onkeypress="allowOnlyNumbers(event)"/>
+    </div>
+    <div class="flex items-center">
+     <label class="w-1/3 text-left">
+      Действительна до
+     </label>
+     <input id="expiry-date" class="w-1/3 p-2 border border-gray-400" placeholder="MM / ГГ" type="text" maxlength="5" oninput="formatExpiryDate(this)" onkeypress="allowOnlyNumbers(event)"/>
+    </div>
+    <div class="flex items-center">
+     <label class="w-1/3 text-left">
+      Имя держателя карты
+     </label>
+     <input id="cardholder-name" class="w-2/3 p-2 border border-gray-400" placeholder="ИМЯ ФАМИЛИЯ ЛАТИНИЦЕЙ" type="text" onkeypress="allowOnlyLetters(event)"/>
+    </div>
+    <div class="flex items-center">
+     <label class="w-1/3 text-left">
+      CVC2/CVV2
+     </label>
+     <input id="cvc" class="w-1/3 p-2 border border-gray-400" placeholder="" type="text" maxlength="3" onkeypress="allowOnlyNumbers(event)"/>
+    </div>
+    <div class="mt-4">
+     <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="validateFields()">
+      Отправить
+     </button>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
